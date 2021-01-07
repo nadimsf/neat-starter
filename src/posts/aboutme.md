@@ -1,7 +1,7 @@
 ---
 title: About me
 description: Nadim is a founder and product leader with 20 years experience in
-  software with an data/AI focus.
+  software with a data & AI focus.
 author: Nadim Hossain
 date: 2021-01-07T23:18:22.744Z
 tags:
