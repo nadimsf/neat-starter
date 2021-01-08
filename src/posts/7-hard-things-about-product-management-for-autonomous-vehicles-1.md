@@ -1,5 +1,5 @@
 ---
-title: "7 Hard Things About Product Management for Autonomous Vehicles "
+title: 7 Challenges in Autonomous Vehicles (AV) Product Management
 description: Part 2 of 2 on Product Management for AV and AI - this one covers
   the 7 challenges.
 author: Nadim Hossain
@@ -7,6 +7,8 @@ date: 2021-01-08T00:36:39.031Z
 tags:
   - config.yml
 ---
+This is second part in a series on product management for self-driving cars - directly applies to PM'ing for for autonomous vehicles more generally; and parts of it are quite relevant to product leadership for Data & AI products in general, especially any ML research-oriented efforts. You may want to read my [first post](/posts/7-hard-things-about-product-management-for-autonomous-vehicles/) for context.
+
 # Challenge #1: Making robots that perceive the world
 
 ![Image for post](https://miro.medium.com/max/60/0*CPenXeS63gSaiokA.png?q=20)
