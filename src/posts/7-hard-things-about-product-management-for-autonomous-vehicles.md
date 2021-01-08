@@ -1,5 +1,5 @@
 ---
-title: Product Management for Autonomous Vehicles (and other Data & AI initiatives)
+title: Product Management for Self-Driving Cars (and Data & AI Products)
 description: How Product Managers can successfully tackle unique AI and Robotics challenges.
 author: Nadim Hossain
 date: 2021-01-08T00:22:51.527Z
@@ -38,13 +38,13 @@ Such efforts often surface challenging trade-offs, and PMs must handle the resul
 
 The scope of this impact grows over time, as is typical for software PMs in other domains. A newly minted PM may be spending much of their time on sprint-level planning, ensuring the priorities within the span of days or weeks are clear. A mid-level PM adds on a focus across multiple quarters and more complex systems. Senior PMs and managers of PMs must align the work of multiple product and engineering areas. Finally, the leader of a PM org must focus primarily on people and strategy — designing the org, recruiting, developing, motivating their own team, and forging strong partnerships with other executives — while possessing a strong grasp of the details to ensure flawless execution.
 
-## Autonomous vehicle PMs support a broad scope
+# Autonomous vehicle PMs support a broad scope
 
 There are some additional complications to consider. AV companies are not yet focused on large-scale commercialization. As such, their organizations are appropriately more research and engineering driven. This means that the nature of an AV PM’s job differs from their peers at Facebook or Google — or for that matter, Uber’s core ride-sharing business — in important ways. Product managers must not only guide the product development roadmap, but also enable and guide the R&D agenda.
 
 A practical way to illustrate this scope is to contrast the ratio of software engineers to product managers between AV companies and large Internet companies. AV companies have \~25 software engineers per product manager, whereas large Internet companies have \~10 engineers per PM:
 
-![Image for post](https://miro.medium.com/max/60/1*pl-ftPzddrEPeSz7iCyv2Q.png?q=20)
+![Image for post]()
 
 ![Image for post](https://miro.medium.com/max/800/1*pl-ftPzddrEPeSz7iCyv2Q.png)
 
@@ -77,7 +77,5 @@ Moreover, humility tends to better foster a safety mindset (imagine the implicat
 We’ve seen above that while the fundamental job description of AV PMs is similar to that of other product managers, they operate in an environment that is quite a bit different than that of typical large software companies. With that foundation established, let’s explore a few of the unique challenges that product managers working on self-driving vehicles must overcome.
 
 Hopefully the above has given you some context on the role of product leaders in the development of self-driving cars. In the [next post](https://nadim-neat.netlify.app/posts/7-hard-things-about-product-management-for-autonomous-vehicles-1/), I will cover 7 specific challenges faced by AV product managers.
-
-
 
 *Originally [published](https://medium.com/@nadimhossain/7-hard-things-about-product-management-for-autonomous-vehicles-5ae3ac938ea3) on Medium.*
