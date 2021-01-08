@@ -141,3 +141,5 @@ But because there can be no driverless car without blending the hardware and sof
 # Final thoughts: Safety is always paramount
 
 AV product managers face myriad challenges in order to achieve the industry’s shared purpose of a driverless future. A common thread you have noticed is that each one of these has an impact on safety, and PMs must keep safety in mind regardless of the particular problem at hand. There is no option to “move fast and break things” when transporting people in fragile containers at high speeds. Instead, AV organizations must “move fast with a safety-critical mentality.” Product managers can play a vital role in both the speed of innovation required and safety, by focusing the organization on, and developing solutions to the most important problems.
+
+*Originally [published](https://medium.com/@nadimhossain/7-hard-things-about-product-management-for-autonomous-vehicles-5ae3ac938ea3) on Medium.*
