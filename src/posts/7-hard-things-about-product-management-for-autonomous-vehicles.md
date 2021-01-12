@@ -1,6 +1,7 @@
 ---
 title: Product Management for Self-Driving Cars (and Data & AI Products)
-description: How Product Managers can successfully tackle unique AI and Robotics challenges.
+description: "Part 1/2: how product managers can successfully tackle unique AI
+  and robotics challenges."
 author: Nadim Hossain
 date: 2021-01-08T00:22:51.527Z
 tags:
