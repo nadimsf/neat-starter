@@ -1,5 +1,5 @@
 ---
-title: The CMO IT Stack Has Arrived
+title: The CMO IT Stack
 description: There's been an explosion of tools to enable marketers but getting
   insights from data remains unsolved.
 author: Nadim Hossain
