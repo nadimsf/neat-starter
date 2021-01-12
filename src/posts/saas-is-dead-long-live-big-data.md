@@ -51,7 +51,6 @@ So can other social software companies tap into this opportunity?\
 Given the inherently large amount of social “data exhaust” that such B2B2C companies are dealing with the answer is yes. Companies in the social identity management and gamification spaces are ones to watch — such as **[Gigya](http://www.gigya.com/)**, **[Janrain](http://www.badgeville.com/), [Badgeville](http://www.badgeville.com/)** and** [Bunchball](http://www.bunchball.com/).** Gigya, for example, recently announced plans to go beyond powering social login for media and retail sites to managing the user data itself. This is potentially a much bigger opportunity than the social login piece (though potentially fraught with privacy landmines).
 
 # \
-\
 **Example 3: Energy Software — Opower**
 
 \
@@ -67,13 +66,14 @@ This becomes quite powerful, if Opower offers new services built on top of that 
 \
 Even though Opower hasn’t done much to espouse this vision, the opportunity at stake is quite large, given how important energy is to our future (if you have any doubts, play the 2012 Presidential debate highlights again!).
 
+
+
 # **Big Data Whitespace**
 
 \
 So what other companies can benefit from such an approach? An obvious one is Tom Siebel’s **[C3 Energy](http://www.c3energy.com/)**, which attempts to do for commercial users what Opower does for residential users. And perhaps startups targeting other regulated industries, such as healthcare, can benefit from similar dynamics. Electronic heath record (EHR) providers come to mind, such as **[Practice Fusion](http://www.practicefusion.com/)** and **[CareCloud](http://www.carecloud.com/),** who are taking on healthcare giants such as **[McKesson](http://www.mckesson.com/)**.
 
-# \
-**Conclusion**
+# **Conclusion**
 
 \
 In summary, traditional software models are giving way to “big data” approaches that seek to monetize the underlying information contained within the software. This means that even cloud computing leaders such as Marc Benioff’s [salesforce.com](http://salesforce.com/) will have to pay attention to not being stuck in yesterday’s SaaS paradigm. Successful cloud applications of the future will need to look more like [LinkedIn](http://www.linkedin.com/)–combining subscription businesses with ad-driven models–and less like Salesforce.com.\
