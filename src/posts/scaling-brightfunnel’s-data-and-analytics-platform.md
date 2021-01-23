@@ -1,5 +1,5 @@
 ---
-title: Scaling BrightFunnel’s Data and Analytics Platform
+title: Scaling the Data and Analytics Platform Powering BrightFunnel
 description: The three phases of evolution of the BrightFunnel data and analytics platform.
 author: Nadim Hossain
 date: 2021-01-23T04:21:02.269Z
