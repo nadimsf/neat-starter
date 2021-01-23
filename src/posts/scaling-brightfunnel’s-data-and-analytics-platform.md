@@ -26,15 +26,21 @@ I still remember the joyous feeling of getting our first beta customer to input 
 
 From these humble beginnings, we signed up 2 more beta customers -- we later renamed them design partners -- and from there, added our first 10 paying customers, including our those first three. We had hypothesized that we could actually go quite far towards our vision with a single data source in Salesforce and this turned out to be the case even more so than expected.
 
+
+
 ## From raw to canonical data
 
 The initial barriers were less about combining data sources and more about transforming existing Salesforce data into a usable form for attribution graph calculations. We ingested a customer’s Salesforce data tables -- pretty much all of them -- in raw format and transformed them into canonical format, consistent across all of our customer orgs. This data then went through one more refinement step to get it ready for analytics queries from our application.
 
 This design pattern of refining raw data into more value-added forms is common in BI applications, it turns out -- but as a founding team with lots of customer empathy and domain expertise, but none of it in analytics -- it was a novel discovery for us. And over time it turned out that by offering customers a way to manage their data for purposes of marketing reporting, we provided a valuable service that paved the way to our product-market fit.
 
+
+
 ## Relying on SQL for data transforms
 
 One of the early architectural decisions we made was to make many necessary computations to transform the data within the database itself, as SQL stored procedures. Keeping the logic close to the data had some advantages, though as expected, there were some longer term trade-offs.
+
+
 
 # Phase 2: Optimized DWH (Series A - years 2-3)
 
@@ -42,9 +48,15 @@ The second phase started around the time of our Series A round, which is to say 
 
 With welcome customers scale came some new technical challenges. Our attribution graph calculations had gotten quite complex, and this caused our data cycle to peak at around 12 hours, with roughly 15-20 customers. This increased from a previous cycle time of 1-2 hours. This was due to the fact that we had more customers, that our newer customers had much more data and that our attribution rules had become more nuanced. On the latter point -- one of the core problems we solved for customers was to identify possible marketing campaigns that influenced pipeline or revenue. To do so, we traced a path from Campaigns (where cost was attached) to Campaign Members (people) to Contacts to Accounts and finally to Opportunities (where revenue or pipeline was attached). We even did this where the influenced person was a Lead without any explicit Account or Opportunity association, with something we named the Orphan Lead Finder (fuzzy logic to match then to their rightful parent account). 
 
+
+
+
+
 ## Setting up Hadoop clusters with Impala
 
 This was all very exciting -- in fact we filed a patent on the attribution methodology -- but computationally expensive. We processed customers’ data sequentially, with a monolothic architecture, which led to every customer experiencing a slowdown as we added more customers. At this point we knew we had to tackle this issue. We chose to setup Hadoop clusters, on which we ran the Impala service to crunch our longest queries, which we offloaded from mySQL to Impala. This sped up the compute in our data warehouse, and our data cycle time came down to 4-5 hours.
+
+
 
 ## Alternatives considered:  MapReduce, graph databases, and Snowflake
 
@@ -54,13 +66,19 @@ We also considered whether using a graph database might offer some optimization 
 
 So we opted not to change our architecture dramatically. It was simply a reality of this phase of growth that we were more or less wedded to some foundational decisions we had made, not because they were impossible to change, but because the opportunity cost, in terms of enabling customer growth while maintaining stability, would be too great.
 
+
+
 ## Horizontal scalability with a pod architecture
 
 Besides making our monolithic architecture run faster, we knew that we needed to make our data platform horizontally scalable. This was a significant change, but this was an investment we chose to make in order to set us up for future growth. We created multiple pods, which accommodated roughly 25 customers each.
 
+
+
 ## Separating front-end and back-end data processing
 
 In this phase we also decided to add a dedicated mySQL database for our web tier, distinct from the backend mySQL database. As sometimes happens with these sorts of decisions at data and analytics companies, we made this change after an outage. We initially had one instance of each, and subsequently scaled the backend to 4 servers. 
+
+
 
 ## Building tools for implementation engineers
 
@@ -71,6 +89,8 @@ With this knowledge in hand, we spent some engineering cycles to make it as easy
 We also found that we could make our analytics platform more valuable by implementing features such as dynamic filters. These were created using customer-defined rules, which made it quite powerful to slice and dice the data in a manner consistent with business goals (e.g. “Filter by Tier 1 target accounts for this fiscal year”). 
 
 In this second, post PMF phase, we had grown our team, knew what customers wanted, had greater clarity on our strategy and were scaling our go-to-market operations. As such we needed to not only speed up the data cycle and make the platform horizontally scalable, but we also needed to improve our implementation and setup tools. 
+
+
 
 # Phase 3: Data lake for streaming data (Years 3-4)
 
@@ -84,11 +104,15 @@ And increasingly, our customers were adopting account-based marketing (ABM) stra
 
 Within this context, it made perfect sense for us to make a major enhancement to our practice of relying on structured data from software systems such as Salesforce, Marketo (now Adobe) and Eloqua (now Oracle). Our credibility with customers had also skyrocketed. This allowed us to ask our customers to install our JavaScript snippet on their web properties. And many of our existing customers enthusiastically said yes; new customers almost unanimously adopted the new approach, which entailed the management of an order of magnitude more data, and some tricky judgment calls for governing that data.
 
+
+
 ## NoSQL: adjusting to allow semi-structured and unstructuted data
 
 As a result of this new type of data we collected directly from our customers -- instead of mediated by other applications -- we had to revisit our data schema to accommodate not only structured data, but also semi-structured data from JSON snippets.
 
 We initially implemented Amazon’s DynamoDB as a key-value store for looking up data from JSON snippets received from customer websites. The data would flow from customer websites to an Amazon API gateway, and then a Lambda function would store the data in DynamoDB. Because mySQL was always the source of truth, we had to sync aggregate data from DynamoDB into mySQL. 
+
+
 
 ## Apache Spark, Kinesis, S3 and Athena for real-time data processing
 
