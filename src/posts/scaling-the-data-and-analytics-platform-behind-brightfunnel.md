@@ -9,17 +9,13 @@ tags:
 ---
 ![](https://lh4.googleusercontent.com/lthpG48BJzLPpRq16h6l-qAkFG-7zHFPWaz6SB7Jgk0d9cfVvseSCweGusyjy3HT3NGuk0bsfscuUBUM-PlW3tDHFNn_5-A-A5VbUIt0N9ZxCiNZN0mk3ubomzBnFY2sFhCCIiIV)
 
-In 2013 I co-founded BrightFunnel, a startup building a data and analytics platform startup to provide marketers with insights on campaign performance. Our demo-day tagline was “Splunk for CMOs” though what we would build over the next few years turned out to be a full-fledged cloud-based business intelligence stack. Over 4+ years, we scaled to $5M in ARR, marquee enterprise customers such as SAP Concur and Verizon Telematics as well emerging unicorn companies such as Cloudera, New Relic and Docker.  
+In 2013 I co-founded BrightFunnel, a startup building a data and analytics platform startup to provide marketers with insights on campaign performance. Our demo-day tagline was “Splunk for CMOs” though what we would build over the next few years turned out to be a full-fledged cloud-based business intelligence stack. Over 4+ years, we scaled to $5M in ARR, marquee enterprise customers such as SAP Concur and Verizon Telematics as well emerging unicorn companies such as Cloudera, New Relic, Hortonworks and Docker.  
 
 The premise of BrightFunnel was simple: marketers’ data was in siloes, and this made it hard to get a full picture of marketing impact on revenue. Enter a marketing analytics platform that unifies B2B marketing data into a single data warehouse, enables custom business logic and data governance and displays insights on performance at a channel, campaign and account level. In a nutshell, we aspired to be the “single source of truth” for the entire marketing organization. This was possible due to some heavy lifting on the data platform front, which helped create a unified view of the customer journey and allowed us to run multi-touch attribution on that data.
-
-
 
 ## It’s data pipelines all the way down
 
 While the vision was compelling, we first first, we had to do some serious data wrangling and data pipeline automation to get there. That’s the focus of this post: I want to reflect on scaling the tech platform. We didn’t foresee when we started that the BrightFunnel platform would evolve through 3 distinct stages, as we scaled from building an MVP with our first 2 beta customers to 100 enterprise customers, paying up to $250k ARR.
-
-
 
 # Phase 1: Monolithic DWH Architecture (seed funding, year 1-2)
 
@@ -27,15 +23,11 @@ I still remember the joyous feeling of getting our first beta customer to input 
 
 From these humble beginnings, we signed up 2 more beta customers -- we later renamed them design partners -- and from there, added our first 10 paying customers, including those first three. We had hypothesized that we could actually go quite far towards our vision with a single data source in Salesforce and this turned out to be the case even more so than expected.
 
-
-
 ## From raw to canonical data
 
 The initial barriers were less about combining data sources and more about transforming existing Salesforce data into a usable form for attribution graph calculations. We ingested a customer’s Salesforce data tables -- pretty much all of them -- in raw format and transformed them into canonical format, consistent across all of our customer orgs. This data then went through one more refinement step to get it ready for analytics queries from our application.
 
 This design pattern of refining raw data into more value-added forms is common in BI applications, it turns out -- but as a founding team with lots of customer empathy and domain expertise, but none of it in analytics -- it was a novel discovery for us. And over time it turned out that by offering customers a way to manage their data for purposes of marketing reporting, we provided a valuable service that paved the way to our product-market fit.
-
-
 
 ## Relying on SQL for data transforms
 
@@ -59,8 +51,6 @@ We also considered whether using a graph database might offer some optimization 
 
 So we opted not to change our architecture dramatically. It was simply a reality of this phase of growth that we were more or less wedded to some foundational decisions we had made, not because they were impossible to change, but because the opportunity cost, in terms of enabling customer growth while maintaining stability, would be too great.
 
-
-
 ## Horizontal scalability with a pod architecture
 
 Besides making our monolithic architecture run faster, we knew that we needed to make our data platform horizontally scalable. This was a significant change, but this was an investment we chose to make in order to set us up for future growth. We created multiple pods, which accommodated roughly 25 customers each.
@@ -68,8 +58,6 @@ Besides making our monolithic architecture run faster, we knew that we needed to
 ## Separating front-end and back-end data processing
 
 In this phase we also decided to add a dedicated mySQL database for our web tier, distinct from the backend mySQL database. As sometimes happens with these sorts of decisions at data and analytics companies, we made this change after an outage. We initially had one instance of each, and subsequently scaled the backend to 4 servers. 
-
-
 
 ## Building tools for implementation engineers
 
@@ -93,8 +81,6 @@ And increasingly, our customers were adopting account-based marketing (ABM) stra
 
 Within this context, it made perfect sense for us to make a major enhancement to our practice of relying on structured data from software systems such as Salesforce, Marketo (now Adobe) and Eloqua (now Oracle). Our credibility with customers had also skyrocketed. This allowed us to ask our customers to install our JavaScript snippet on their web properties. And many of our existing customers enthusiastically said yes; new customers almost unanimously adopted the new approach, which entailed the management of an order of magnitude more data, and some tricky judgment calls for governing that data.
 
-
-
 ## NoSQL: adjusting to allow semi-structured and unstructured data
 
 As a result of this new type of data we collected directly from our customers -- instead of mediated by other applications -- we had to revisit our data schema to accommodate not only structured data, but also semi-structured data from JSON snippets.
@@ -107,13 +93,9 @@ As our data exploded, we further adapted our design. We landed on storing the da
 
 But as customers’ web event activity data pipeline grew rapidly, it was taking our system 24 hours to process all the events received daily. This made the data tremendously less valuable to our customers. It was potentially an existential threat. We surmounted this challenge with the help of Apache Spark. Using Amazon EMR, we spin up machines for running Spark clusters to process web activity data in S3 and write the aggregate statistics in mySQL. This was a significant parallel data processing challenge, and Spark performed admirably in this task. We also found it useful to implement Amazon Athena, which gave us SQL querying facility on top of our S3 data. This was very useful for our product managers and our business analyst in particular, who could solve customer problems or gain insights faster by being able to query our S3 data lake in addition to our mySQL database. 
 
-
-
 ## Delighting users while improving data cycle from 24 to 3 hours
 
 Through the above combination of improvements, we reduced our data cycle time for web events from 24 hours to 3 hours, and did so while unlocking new functionality for our customers.
-
-
 
 ## Conclusion
 
